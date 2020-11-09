@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="slurm_acct_db" uuid="827f8816-981a-4c9c-908a-e5896c6dba54">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://mpi-m1.sgu.ru:3306/slurm_acct_db</jdbc-url>
+    </data-source>
+  </component>
+</project>
