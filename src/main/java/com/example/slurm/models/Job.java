@@ -93,6 +93,7 @@ public class Job {
     }
 
     public long getTime() {
+
         return time();
     }
 
