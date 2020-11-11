@@ -1,6 +1,7 @@
 package com.example.slurm.models;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +36,6 @@ public class Job {
 
         long diffInMillies = Math.abs(end.getTime() - start.getTime());
         long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.SECONDS);
-
         return diff;
     }
 
@@ -84,12 +84,21 @@ public class Job {
         return exitCode;
     }
 
-    public Long getTimeStart() {
-        return timeStart;
+    public String getTimeStart() {
+        Date date = new java.util.Date(timeStart * 1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss z");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+4"));
+        String formattedDate = sdf.format(date);
+        return formattedDate;
     }
 
-    public Long getTimeEnd() {
-        return timeEnd;
+    public String getTimeEnd() {
+        Date date = new java.util.Date(timeEnd * 1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss z");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+4"));
+        String formattedDate = sdf.format(date);
+        return formattedDate;
+        
     }
 
     public long getTime() {
