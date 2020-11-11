@@ -1,1 +1,18 @@
-hello world
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<th:block th:each="s : ${statistics}">
+    <table>
+        <thead>
+            <th th:utext="${s.time}"</th>>
+            <td th:utext="${s.getAccount()}"></td>
+            <td th:utext="${s.id_Job}"></td>
+        </thead>
+    </table>
+</th:block>
+</body>
+</html>

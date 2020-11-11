@@ -4,6 +4,8 @@ import com.example.slurm.models.Job;
 import com.example.slurm.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,10 +17,12 @@ public class JobController {
     private JobRepository jobRepository;
 
     @GetMapping(path = "/job")
-    public @ResponseBody
-    Iterable<Job> getAllJobs() {
+    public String getAllJobs(Model model) {
         //This returns a JSON or XML with the user
-        return jobRepository.findAll();
+        model.addAttribute("statistics", jobRepository.findAll());
+        //return jobRepository.findAll();
+        return "statistics";
     }
 
+    Job job = new Job();
 }

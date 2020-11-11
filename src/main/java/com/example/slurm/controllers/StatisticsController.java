@@ -17,13 +17,8 @@ public class StatisticsController {
     private StatisticsRepository statisticsRepository;
 
     @GetMapping(path = "/statistics")
-    public @ResponseBody
-    AtomicReference<Integer> getAllJob() {
-        //This returns a JSON or XML with the user
-        Iterable<Statistics> stats = statisticsRepository.findAll();
-        AtomicReference<Integer> sum = new AtomicReference<>(0);
-        stats.forEach(s -> sum.updateAndGet(v -> v + s.count()));
-        return sum;
+    public String statistics(){
+        return "statistics";
     }
 }
 
