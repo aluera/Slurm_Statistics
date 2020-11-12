@@ -28,6 +28,9 @@ public class Job {
     @Column(name = "time_end")
     private Long timeEnd;
 
+    @Column(name = "timelimit")
+    private Integer timeLimit;
+
     //Секнуды во времени выполнение задачи
     @Transient
     public long time() {
@@ -54,6 +57,12 @@ public class Job {
 
     @Column(name = "job_name")
     private String job_Name;
+
+    @Column(name = "id_user")
+    private Integer id_User;
+
+    @Column(name = "id_group")
+    private Integer id_Group;
 
     public String getJob_Name() {
         return job_Name;
@@ -98,7 +107,19 @@ public class Job {
         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+4"));
         String formattedDate = sdf.format(date);
         return formattedDate;
-        
+
+    }
+
+    public Integer getTimeLimit() {
+        return timeLimit;
+    }
+
+    public Integer getId_User() {
+        return id_User;
+    }
+
+    public Integer getId_Group() {
+        return id_Group;
     }
 
     public long getTime() {

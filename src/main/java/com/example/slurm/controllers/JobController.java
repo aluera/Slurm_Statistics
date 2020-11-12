@@ -5,9 +5,7 @@ import com.example.slurm.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class JobController {
@@ -19,9 +17,9 @@ public class JobController {
     @GetMapping(path = "/job")
     public String getAllJobs(Model model) {
         //This returns a JSON or XML with the user
-        model.addAttribute("statistics", jobRepository.findAll());
+        model.addAttribute("job", jobRepository.findAll());
         //return jobRepository.findAll();
-        return "statistics";
+        return "job";
     }
 
     Job job = new Job();
