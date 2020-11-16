@@ -51,5 +51,30 @@
     </tbody>
 </table>
 </th:block>
+<nav aria-label="Pagination" th:if="${job.totalPages gt 0}">
+    <ul class="pagination justify-content-center font-weight-bold">
+        <li class="page-item" th:classappend="${job.number eq 0} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/job?page={id}(id=${job.number lt 2 ? 1 : job.number})}"
+               aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${i eq job.number + 1} ? 'active'"
+            th:each="i : ${#numbers.sequence( 1, job.totalPages, 1)}">
+            <a class="page-link" th:href="@{/job?page={id}(id=${i})}" th:text="${i}"
+               th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+        </li>
+        <li class="page-item" th:classappend="${job.number + 1 eq job.totalPages} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/job?page={id}(id=${job.number + 2})}"
+               aria-label="Next" title="Next Page" data-toggle="tooltip">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
 </body>
 </html>
