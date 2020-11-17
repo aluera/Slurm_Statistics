@@ -31,11 +31,12 @@ public class JobController {
             size = Integer.parseInt(request.getParameter("size"));
         }
 
-       // if (keyword != null) {
-       //     model.addAttribute("jobs", jobService.findByKeyword(keyword));
-        //} else {
-        //    model.addAttribute("jobs", jobService.getJob());
-        //}
+        if (keyword != null) {
+            model.addAttribute("jobs", jobService.findByKeyword(keyword));
+        } else {
+            model.addAttribute("jobs", jobService.getJob());
+        }
+
         model.addAttribute("jobs", jobRepository.findAll(PageRequest.of(page, size)));
         return "jobs";
     }
