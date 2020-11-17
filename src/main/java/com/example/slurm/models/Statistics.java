@@ -23,12 +23,12 @@ public class Statistics {
         return (timeStart);
     }
 
-    public Integer count() {
+    public Integer countTime() {
         Integer CountTime;
         CountTime = (timeEnd - timeStart);
         return CountTime;
     }
     public Integer getCount(){
-        return (count());
+        return (countTime());
     }
 }

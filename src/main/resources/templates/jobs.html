@@ -14,6 +14,12 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
+<!--
+<form th:action="@{/jobs}" method="get">
+<input id="txtSearch" type="text" name="keyword">
+<button type="submit">Filter</button>
+</form>
+-->
 <table class="table table-striped">
     <thead>
     <td>Номер задачи</td>
@@ -32,7 +38,7 @@
     <td>Код завершения</td>
     </thead>
     <tbody>
-    <tr th:block th:each="j : ${job}">
+    <tr th:block th:each="j : ${jobs}">
         <td th:text="${j.getId_Job()}"></td>
         <td th:text="${j.getAccount()}"></td>
         <td th:text="${j.getId_User()}"></td>
@@ -51,23 +57,23 @@
     </tbody>
 </table>
 </th:block>
-<nav aria-label="Pagination" th:if="${job.totalPages gt 0}">
+<nav aria-label="Pagination" th:if="${jobs.totalPages gt 0}">
     <ul class="pagination justify-content-center font-weight-bold">
-        <li class="page-item" th:classappend="${job.number eq 0} ? 'disabled'">
+        <li class="page-item" th:classappend="${jobs.number eq 0} ? 'disabled'">
             <a class="page-link"
-               th:href="@{/job?page={id}(id=${job.number lt 2 ? 1 : job.number})}"
+               th:href="@{/jobs?page={id}(id=${jobs.number lt 2 ? 1 : jobs.number})}"
                aria-label="Previous" title="Previous Page" data-toggle="tooltip">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        <li class="page-item" th:classappend="${i eq job.number + 1} ? 'active'"
-            th:each="i : ${#numbers.sequence( 1, job.totalPages, 1)}">
-            <a class="page-link" th:href="@{/job?page={id}(id=${i})}" th:text="${i}"
+        <li class="page-item" th:classappend="${i eq jobs.number + 1} ? 'active'"
+            th:each="i : ${#numbers.sequence( 1, jobs.totalPages, 1)}">
+            <a class="page-link" th:href="@{/jobs?page={id}(id=${i})}" th:text="${i}"
                th:title="${'Page '+ i}" data-toggle="tooltip"></a>
         </li>
-        <li class="page-item" th:classappend="${job.number + 1 eq job.totalPages} ? 'disabled'">
+        <li class="page-item" th:classappend="${jobs.number + 1 eq jobs.totalPages} ? 'disabled'">
             <a class="page-link"
-               th:href="@{/job?page={id}(id=${job.number + 2})}"
+               th:href="@{/jobs?page={id}(id=${jobs.number + 2})}"
                aria-label="Next" title="Next Page" data-toggle="tooltip">
                 <span aria-hidden="true">&raquo;</span>
             </a>
