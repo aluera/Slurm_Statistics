@@ -31,6 +31,7 @@ public class Job {
     @Column(name = "timelimit")
     private Integer timeLimit;
 
+
     //Секнуды во времени выполнение задачи
     @Transient
     public long time() {
